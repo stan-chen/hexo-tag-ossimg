@@ -1,6 +1,6 @@
 {
   "name": "hexo-tag-ossimg",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Aliyun OSS Image tag for hexo.",
   "license": "MIT",
   "main": "index.js",
@@ -23,7 +23,9 @@
   },
   "dependencies": {
     "ali-oss": "^4.10.0",
-    "co": "^4.6.0"
+    "bluebird": "^3.5.0",
+    "co": "^4.6.0",
+    "hexo-fs": "^0.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
