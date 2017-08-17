@@ -1,24 +1,20 @@
-# hexo-tag-bilibili
-[![Code Climate](https://codeclimate.com/github/Z4Tech/hexo-tag-bilibili/badges/gpa.svg)](https://codeclimate.com/github/Z4Tech/hexo-tag-bilibili)
-Embed bilibili videos in Hexo posts/pages
+# hexo-tag-ossimg
 
 # About
-> This is a [Hexo](http://hexo.io/) tag plugin for embeded  [Bilibili](http://bilibili.com/) videos in posts/pages
+> This is a [Hexo](http://hexo.io/) tag plugin for push post image to aliyun OSS.
 
 ## Installation
 ```bash
-npm install --save hexo-tag-vine
+npm install --save hexo-tag-ossimg
 ```
 ## Usage
 The full tag format is as follows:
 ```bash
-{% bilibili [av_id] %}
-or
-{% bilibili [av_id] [page] %}
+{% ossimg slug [title] %}
 ```
 example:
 ```bash
-{% bilibili 2333333 3 %}
+{% ossimg 1.png the image %}
 ```
 
 ## Configuration
@@ -26,14 +22,16 @@ You can configure the type, autoplay and size in your main _config.yml:
 
 Example configuration:
 ```yml
-bilibili:
-  width: 452
-  height: 544
+# OSS Images Config
+oss_url: https://assets.example.com
+oss_dir: /images/ # optional
+oss_acid: <AccessID>
+oss_ackey: <AccessKey>
+oss_region: oss-cn-shenzhen
+oss_bucket: assets-example-com
+oss_internal: false # optional is internal default false
 ```
-
-## Style
-The Video Clip is wrapped by a div with the class `bili_video`. You can modify it in your theme's css files.
 
 ## License
 
-Copyright (c) 2015, Z4Tech. Licensed under the [MIT license](LICENSE).
+Copyright (c) 2017, Xuefei Chen. Licensed under the [MIT license](LICENSE).

@@ -10,12 +10,22 @@
       "email": "chenxuefei_pp@163.com"
     }
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "chenxuefei-pp",
+  "homepage": "https://github.com/chenxuefei-pp/hexo-tag-ossimg#readme",
+  "keywords": [
+    "hexo",
+    "aliyun",
+    "oss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenxuefei-pp/hexo-tag-ossimg.git"
+  },
   "dependencies": {
     "ali-oss": "^4.10.0",
     "co": "^4.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
