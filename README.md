@@ -1,5 +1,7 @@
 # hexo-tag-ossimg
 
+[![Build Status](https://travis-ci.org/chenxuefei-pp/hexo-tag-ossimg.svg?branch=master)](https://travis-ci.org/chenxuefei-pp/hexo-tag-ossimg)
+
 # About
 > This is a [Hexo](http://hexo.io/) tag plugin for push post image to aliyun OSS.
 
