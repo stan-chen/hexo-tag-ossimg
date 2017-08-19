@@ -8,12 +8,15 @@
 var url = require('url');
 var ctx = hexo;
 
+var oss_config = ctx.config.asset_oss;
+
 var ossimg_enable = false;
-if ( ctx.config.oss_url &&
-    ctx.config.oss_acid &&
-    ctx.config.oss_ackey &&
-    ctx.config.oss_region &&
-    ctx.config.oss_bucket  ){
+if (oss_config.enable &&
+    oss_config.oss_url.length &&
+    oss_config.oss_acid.length &&
+    oss_config.oss_ackey.length &&
+    oss_config.oss_region.length &&
+    oss_config.oss_bucket.length  ){
     ossimg_enable = true;
 }
 
@@ -25,11 +28,11 @@ hexo.extend.tag.register('ossimg', function(args){
     if (!ossimg_enable){
         img_root = ctx.config.root;
     } else {
-        var oss_dir = '/';
-        if (ctx.config.oss_dir){
-            oss_dir = ctx.config.oss_dir;
+        var oss_root = '/';
+        if (oss_config.oss_root.length){
+            oss_root = oss_config.oss_root;
         }
-        img_root = url.resolve(ctx.config.oss_url , oss_dir);
+        img_root = url.resolve(oss_config.oss_url , oss_root);
     }
 
     var slug = args.shift();

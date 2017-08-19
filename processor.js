@@ -12,22 +12,24 @@ const co  = require('co');
 const OSS = require('ali-oss');
 
 module.exports = function (ctx, oss_list) {
+    const oss_config = ctx.config.asset_oss;
+
     var internal = false;
-    if (ctx.config.oss_internal){
+    if (oss_config.oss_internal){
         internal = true;
     }
     const oss_client = new OSS({
-        region: ctx.config.oss_region,
-        accessKeyId: ctx.config.oss_acid,
-        accessKeySecret: ctx.config.oss_ackey,
-        bucket: ctx.config.oss_bucket,
+        region: oss_config.oss_region,
+        accessKeyId: oss_config.oss_acid,
+        accessKeySecret: oss_config.oss_ackey,
+        bucket: oss_config.oss_bucket,
         internal: internal
     });
 
     return function () {
         var oss_dir = '/';
-        if (ctx.config.oss_dir){
-            oss_dir = ctx.config.oss_dir;
+        if ( oss_config.oss_root.length ){
+            oss_dir = oss_config.oss_root;
         }
         Promise.filter(oss_list, function (asset) {
             return fs.exists(asset.source).then(function(exist) {
@@ -36,7 +38,7 @@ module.exports = function (ctx, oss_list) {
             });
         }).map(function (asset) {
             co(function* () {
-                oss_client.useBucket(ctx.config.oss_bucket);
+                oss_client.useBucket(oss_config.oss_bucket);
                 var put_path = url.resolve( oss_dir, asset.path );
                 var result = yield oss_client.put(put_path , asset.source);
             }).catch(function (err) {
