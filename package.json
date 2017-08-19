@@ -1,6 +1,6 @@
 {
   "name": "hexo-tag-ossimg",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Aliyun OSS Image tag for hexo.",
   "license": "MIT",
   "main": "index.js",
