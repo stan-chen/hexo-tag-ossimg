@@ -6,33 +6,20 @@
  */
 
 var url = require('url');
+var util = require('./lib/utils');
 var ctx = hexo;
 
 var oss_config = ctx.config.asset_oss;
-
-var ossimg_enable = false;
-if (oss_config.enable &&
-    oss_config.oss_url.length &&
-    oss_config.oss_acid.length &&
-    oss_config.oss_ackey.length &&
-    oss_config.oss_region.length &&
-    oss_config.oss_bucket.length  ){
-    ossimg_enable = true;
-}
 
 var PostAsset = ctx.model('PostAsset');
 var oss_img_list = []
 hexo.extend.tag.register('ossimg', function(args){
     var img_root = '';
 
-    if (!ossimg_enable){
+    if (!util.enable(oss_config)){
         img_root = ctx.config.root;
     } else {
-        var oss_root = '/';
-        if (oss_config.oss_root.length){
-            oss_root = oss_config.oss_root;
-        }
-        img_root = url.resolve(oss_config.oss_url , oss_root);
+        img_root = util.img_path(oss_config);
     }
 
     var slug = args.shift();
@@ -50,8 +37,8 @@ hexo.extend.tag.register('ossimg', function(args){
     return '<img src="' + url.resolve(img_root, asset.path) + '" alt="' + alt + '" title="' + title + '">';
 });
 
-if(ossimg_enable) {
-    hexo.extend.filter.register('after_generate', require('./processor')(ctx, oss_img_list) );
+if(util.enable(oss_config)) {
+    hexo.extend.filter.register('after_generate', require('./lib/process')(ctx, oss_img_list) );
 }
 
 
