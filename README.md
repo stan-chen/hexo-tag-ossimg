@@ -1,8 +1,10 @@
-# hexo-tag-ossimg
+# hexo-tag-ossimg (Deprecated)
 
 [![Build Status](https://travis-ci.org/chenxuefei-pp/hexo-tag-ossimg.svg?branch=master)](https://travis-ci.org/chenxuefei-pp/hexo-tag-ossimg)
 
 # About
+
+## This project is no longer maintained. Please use [hexo-asset-oss](https://github.com/stan-chen/hexo-asset-oss.git).
 
 > This is a [Hexo](http://hexo.io/) tag plugin for push post image to aliyun OSS.
 
